@@ -5,6 +5,7 @@ import (
 	"log"
 	"testing"
 
+	"github.com/stretchr/testify/require"
 	"github.com/testcontainers/testcontainers-go"
 	"github.com/testcontainers/testcontainers-go/modules/postgres"
 )
@@ -82,4 +83,18 @@ func TestDefaultSnapshot(t *testing.T) {
 	if err != nil {
 		log.Fatalf("Failed to snapshot test DB: %v", err)
 	}
+}
+
+func TestDefaultSnapshot2(t *testing.T) {
+	ctx := context.Background()
+
+	ctr, err := postgres.Run(ctx, "docker.io/postgres:16-alpine",
+		postgres.WithDatabase("users"),
+		postgres.BasicWaitStrategies(),
+	)
+	testcontainers.CleanupContainer(t, ctr)
+	require.NoError(t, err)
+
+	err = ctr.Snapshot(ctx)
+	require.NoError(t, err)
 }
