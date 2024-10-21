@@ -4,8 +4,8 @@ go 1.23.2
 
 require (
 	github.com/stretchr/testify v1.9.0
-	github.com/testcontainers/testcontainers-go v0.33.1-0.20241018220052-f1632b35b3a2
-	github.com/testcontainers/testcontainers-go/modules/postgres v0.33.0
+	github.com/testcontainers/testcontainers-go v0.34.0
+	github.com/testcontainers/testcontainers-go/modules/postgres v0.34.0
 )
 
 require (
